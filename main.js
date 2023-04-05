@@ -1,9 +1,18 @@
 let taskInput =document.getElementById("task-input");
 let addButton=document.getElementById("add-button");
+let tabs=document.querySelectorAll(".task-tabs div")
 let taskList=[];
 
 addButton.addEventListener("click",addTask);
 
+for(let i=1;i<tabs.length; i++){
+    tabs[i].addEventListener("click",function(event){filter(event)})
+}
+console.log(tabs);
+
+function filter(event){
+    console.log("클릭됌");
+}
 function randomIDGenerate(){
     return '_' + Math.random().toString(36).substr(2, 9);
 }
