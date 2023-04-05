@@ -2,6 +2,7 @@ let taskInput =document.getElementById("task-input");
 let addButton=document.getElementById("add-button");
 let tabs=document.querySelectorAll(".task-tabs div")
 let taskList=[];
+let mode='';
 
 addButton.addEventListener("click",addTask);
 
@@ -11,7 +12,17 @@ for(let i=1;i<tabs.length; i++){
 console.log(tabs);
 
 function filter(event){
-    console.log("클릭됌");
+    mode=event.target.id;
+    let filterList=[];
+    if(mode=="all"){
+        render();
+    }else if(mode=="ongoing"){
+        for(let i=0; i<taskList.length; i++){
+            if(taskList[i].isComplete ==false){
+                filterList.push(taskList[i]);
+            }
+        }
+    }console.log(filterList);
 }
 function randomIDGenerate(){
     return '_' + Math.random().toString(36).substr(2, 9);
